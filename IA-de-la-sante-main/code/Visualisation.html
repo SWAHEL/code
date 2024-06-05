@@ -7,30 +7,25 @@
     <link rel="stylesheet" href="Visualisation.css">
     <link rel="stylesheet" href="common-styles.css">
     <script src="https://d3js.org/d3.v6.min.js"></script>
-    <script src="script.js"></script>
     <script src="visualisation.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="icon" type="image/x-icon" href="C:\Users\hp\OneDrive\Bureau\htlm othman\pfa\magnifying-glass-solid.svg">
 </head>
 
 <body>  
   <div id="home">
       <ul class="menu">
-        <li><h1 id="VisualizingCancer"> Visualizing Cancer   </h1>  </li> 
-        <li class="bar"><a href="index.html"><h3>Home </h3></a></li>
-        <li class="bar"><a href="Visualisation.html"><h3>Visualisation </h3></a></li>
-        <li class="bar"><a href="../ML DEPLOY SECOND ATTEMPT/templates/Analyse.html"><h3>Analyse </h3></a></li>
-        <li class="bar"><a href="contact.html"><h3>Contact </h3></a></li>
+        <li><h1 id="VisualizingCancer">Visualizing Cancer</h1></li> 
+        <li class="bar"><a href="index.html"><h3>Home</h3></a></li>
+        <li class="bar"><a href="Visualisation.html"><h3>Visualisation</h3></a></li>
+        <li class="bar"><a href="../ML DEPLOY SECOND ATTEMPT/templates/Analyse.html"><h3>Analyse</h3></a></li>
+        <li class="bar"><a href="contact.html"><h3>Contact</h3></a></li>
       </ul>
       <div class="hero-title">
-        <h1>
-          VISUALISATION 
-        </h1>
+        <h1>VISUALISATION</h1>
         <div class="underline"></div>
-        <h3 class="under-hero-title">
-           Healthcare with Data Visualization
-        </h3> 
+        <h3 class="under-hero-title">Healthcare with Data Visualization</h3> 
       </div>
   </div>
 
@@ -40,58 +35,67 @@
       <p>
         Welcome to our Visualisation Gallery!
         Explore captivating images that offer insights into cancer research and healthcare. <br>
-         Click on any image to learn more.
+        Click on any image to learn more.
+      </p>
+      <p>
+        This gallery includes several visualizations to help understand different aspects of breast cancer data:
+        <ul>
+          <li>The scatter plots show the relationship between different features of the tumor (such as radius, texture, and perimeter) for benign and malignant tumors.</li>
+          <li>The bar chart visualizes the count of benign and malignant cases in the dataset.</li>
+        </ul>
       </p>
   </div>
 
   <!-- Visualization Charts and Descriptions -->
-  <div class="chart-row">
-      <div class="chart-container">
-          <div id="scatterPlot1" class="chart"></div>
-          <div class="chart-description">
-              <p>This scatter plot shows the relationship between the mean radius and mean texture of the tumors.</p>
-          </div>
-      </div>
+  <div class="visualization-container">
+      <div id="scatterPlot1" class="visualization"></div>
+      <div id="scatterPlot2" class="visualization"></div>
   </div>
-  <div class="chart-row">
-      <div class="chart-container">
-          <div id="scatterPlot2" class="chart"></div>
-          <div class="chart-description">
-              <p>This scatter plot illustrates the relationship between the mean radius and mean perimeter of the tumors.</p>
-          </div>
-      </div>
-  </div>
-  <div class="chart-row">
-      <div class="chart-container">
-          <div id="scatterPlot3" class="chart"></div>
-          <div class="chart-description">
-              <p>This scatter plot shows the relationship between the mean texture and mean perimeter of the tumors.</p>
-          </div>
-      </div>
-  </div>
-  <div class="chart-row">
-      <div class="chart-container">
-          <div id="densityPlot1" class="chart"></div>
-          <div class="chart-description">
-              <p>This density plot visualizes the distribution of the mean area of the tumors for benign and malignant cases.</p>
-          </div>
-      </div>
-  </div>
-  <div class="chart-row">
-      <div class="chart-container">
-          <div id="densityPlot2" class="chart"></div>
-          <div class="chart-description">
-              <p>This density plot visualizes the distribution of the mean smoothness of the tumors for benign and malignant cases.</p>
-          </div>
-      </div>
-  </div>
-  <div class="chart-row">
-      <div class="chart-container">
-          <div id="barChart" class="chart"></div>
-          <div class="chart-description">
-              <p>This bar chart shows the count of benign and malignant tumor diagnoses.</p>
-          </div>
-      </div>
+  <div class="visualization-container">
+      <div id="scatterPlot3" class="visualization"></div>
+      <div id="barChart" class="visualization"></div>
   </div>
 </body>
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+        <h4>About the Project</h4>
+        <p>
+            This project, "AI in Healthcare", focuses on using machine learning to predict breast cancer. 
+            Developed as part of our final year project.
+        </p>
+    </div>
+    <div class="footer-section">
+        <h4>Meet the Team</h4>
+        <p>
+            <strong>Ismail BRTIT</strong> <br>
+            <strong>Souhail El Bouazzaoui</strong> 
+        </p>
+    </div>
+    <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>
+            Email: <a href="mailto:contact@example.com">IA_Health@gmail.com</a><br>
+            Phone: +123-456-7890
+        </p>
+    </div>
+    <div class="footer-section">
+        <h4>Our GitHub</h4>
+        <p>
+            <a href="https://github.com/IsmailBrtit" target="_blank">Ismail BRTIT</a><br>
+            <a href="https://github.com/SWAHEL" target="_blank">Souhail El Bouazzaoui</a>
+        </p>
+    </div>
+    <div class="footer-section">
+        <h4>Our School</h4>
+        <p>
+            E.N.S.I.A.S.<br>
+            Computer Science Program
+        </p>
+    </div>
+</div>
+<div class="footer-bottom">
+    <p>&copy; 2024 AI in Healthcare. All rights reserved.</p>
+</div>
+</footer>
 </html>

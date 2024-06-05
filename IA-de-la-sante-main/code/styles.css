@@ -1,4 +1,7 @@
+body {
+  height: 700px;
 
+}
 
 #home{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url('../img/gty_231012_medical_records_database_800x450.avif');
@@ -118,9 +121,7 @@ input[type="checkbox"]:checked ~ label:before {
   border-radius: 20px;
 }
 
-footer{
-  
-}
+
 
 
 

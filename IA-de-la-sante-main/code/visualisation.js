@@ -36,13 +36,10 @@ d3.csv("data.csv").then(function(data) {
         1: "Malignant"
     };
 
-    const features = [
-        "radius_mean", "texture_mean", "perimeter_mean", "area_mean",
-        "smoothness_mean", "compactness_mean", "concavity_mean", "concave_points_mean",
-        "radius_worst", "texture_worst", "perimeter_worst", "area_worst",
-        "smoothness_worst", "compactness_worst", "concavity_worst", "concave_points_worst",
-        "symmetry_worst", "fractal_dimension_worst"
-    ];
+    // Create tooltip element
+    const tooltip = d3.select("body").append("div")
+                      .attr("class", "tooltip")
+                      .style("opacity", 0);
 
     const pairs = [
         ["radius_mean", "texture_mean"],
@@ -94,7 +91,21 @@ d3.csv("data.csv").then(function(data) {
            .attr("cx", d => x(d[pair[0]]))
            .attr("cy", d => y(d[pair[1]]))
            .attr("r", 3)
-           .style("fill", d => color(d.diagnosis));
+           .style("fill", d => color(d.diagnosis))
+           .attr("class", "pointer-cursor")
+           .on("mouseover", function(event, d) {
+               tooltip.transition()
+                      .duration(200)
+                      .style("opacity", .9);
+               tooltip.html(colorName[d.diagnosis])
+                      .style("left", (event.pageX + 5) + "px")
+                      .style("top", (event.pageY - 28) + "px");
+           })
+           .on("mouseout", function(d) {
+               tooltip.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+           });
 
         const legend = svg.selectAll(".legend")
                           .data(color.domain())
@@ -116,81 +127,9 @@ d3.csv("data.csv").then(function(data) {
               .text(d => colorName[d]);
     };
 
-    pairs.forEach((pair, i) => createScatterPlot(pair, `scatterPlot${i+1}`));
+    pairs.forEach((pair, i) => createScatterPlot(pair, `scatterPlot${i + 1}`));
 
-    const createDensityPlot = (feature, containerId) => {
-        const svg = d3.select(`#${containerId}`)
-                      .append("svg")
-                      .attr("width", width + margin.left + margin.right)
-                      .attr("height", height + margin.top + margin.bottom)
-                      .append("g")
-                      .attr("transform", `translate(${margin.left},${margin.top})`);
-
-        const x = d3.scaleLinear()
-                    .domain([0, d3.max(data, d => d[feature])])
-                    .range([0, width]);
-
-        svg.append("g")
-           .attr("transform", `translate(0,${height})`)
-           .call(d3.axisBottom(x));
-
-        svg.append("text")
-           .attr("transform", `translate(${width / 2}, ${height + margin.top + 20})`)
-           .style("text-anchor", "middle")
-           .text(feature);
-
-        const kde = kernelDensityEstimator(kernelEpanechnikov(7), x.ticks(40));
-        const density1 = kde(data.filter(d => d.diagnosis === 0).map(d => d[feature]));
-        const density2 = kde(data.filter(d => d.diagnosis === 1).map(d => d[feature]));
-
-        const y = d3.scaleLinear()
-                    .domain([0, d3.max([...density1, ...density2], d => d[1])])
-                    .range([height, 0]);
-
-        svg.append("g")
-           .call(d3.axisLeft(y));
-
-        svg.append("path")
-           .datum(density1)
-           .attr("fill", "#1f77b4")
-           .attr("opacity", ".5")
-           .attr("stroke", "none")
-           .attr("d", d3.line()
-                        .curve(d3.curveBasis)
-                        .x(d => x(d[0]))
-                        .y(d => y(d[1])));
-
-        svg.append("path")
-           .datum(density2)
-           .attr("fill", "#ff7f0e")
-           .attr("opacity", ".5")
-           .attr("stroke", "none")
-           .attr("d", d3.line()
-                        .curve(d3.curveBasis)
-                        .x(d => x(d[0]))
-                        .y(d => y(d[1])));
-
-        const legend = svg.selectAll(".legend")
-                          .data(color.domain())
-                          .enter().append("g")
-                          .attr("class", "legend")
-                          .attr("transform", (d, i) => `translate(0,${i * 20})`);
-
-        legend.append("rect")
-              .attr("x", width - 18)
-              .attr("width", 18)
-              .attr("height", 18)
-              .style("fill", color);
-
-        legend.append("text")
-              .attr("x", width - 24)
-              .attr("y", 9)
-              .attr("dy", ".35em")
-              .style("text-anchor", "end")
-              .text(d => colorName[d]);
-    };
-
-    features.slice(0, 4).forEach((feature, i) => createDensityPlot(feature, `densityPlot${i+1}`));
+    // Remove createDensityPlot for "area_mean" and add bar chart instead
 
     const svgBar = d3.select("#barChart")
                      .append("svg")
@@ -221,12 +160,25 @@ d3.csv("data.csv").then(function(data) {
           .data(diagnosisCounts)
           .enter()
           .append("rect")
-          .attr("class", "bar")
+          .attr("class", "bar pointer-cursor")
           .attr("x", d => xBar(d[0]))
           .attr("y", d => yBar(d[1]))
           .attr("width", xBar.bandwidth())
           .attr("height", d => height - yBar(d[1]))
-          .attr("fill", d => d[0] === 0 ? "#1f77b4" : "#ff7f0e");
+          .attr("fill", d => d[0] === 0 ? "#1f77b4" : "#ff7f0e")
+          .on("mouseover", function(event, d) {
+              tooltip.transition()
+                     .duration(200)
+                     .style("opacity", .9);
+              tooltip.html(colorName[d[0]])
+                     .style("left", (event.pageX + 5) + "px")
+                     .style("top", (event.pageY - 28) + "px");
+          })
+          .on("mouseout", function(d) {
+              tooltip.transition()
+                     .duration(500)
+                     .style("opacity", 0);
+          });
 
     // Add axis labels
     svgBar.append("text")
@@ -277,4 +229,3 @@ function kernelEpanechnikov(k) {
         return Math.abs(v /= k) <= 1 ? .75 * (1 - v * v) / k : 0;
     };
 }
-

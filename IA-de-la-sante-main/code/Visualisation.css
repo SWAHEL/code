@@ -1,19 +1,21 @@
-#home{
+#home {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url('../img/new-technology-may-help-detect-skin-cancer-at-early-stage.jpg');
-    
-   
-  }
-h3{
-        font-family:"Open Sans",Sans-serif ;
+}
 
+h3 {
+    font-family: "Open Sans", Sans-serif;
 }
-.hero-title .underline{
-    margin: 10px auto; 
+
+.hero-title .underline {
+    margin: 10px auto;
 }
-.inline-block{
+
+.inline-block {
     margin-top: 50px;
     margin-left: 50px;
+    margin-bottom: 50px;
 }
+
 .inline-block h3 {
     display: inline-block;
     vertical-align: top; 
@@ -26,25 +28,45 @@ h3{
     margin-left: 10px;
     width: 60px;
 }
-.inline-block p{
-    font-family:"Open Sans",Sans-serif ;
+
+.inline-block p {
+    font-family: "Open Sans", Sans-serif;
     color: #696b6d;
     line-height: 1.8;
-    font-size:120%;
+    font-size: 120%;
     margin-left: 25px;
+    margin-bottom:30px;
+    margin-top: 0px;
 }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.chart-container {
-    display: flex;
-    margin: 20px;
-    align-items: center;
+.visualization-container {
+    display: inline-flex;
+    justify-content: space-around;
+    margin: 30px 10%;
+    flex-wrap: wrap;
+}
+
+.visualization {
+    width: 45%;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.visualization:hover {
+    transform: scale(1.05);
 }
 
 .chart {
@@ -53,16 +75,60 @@ body {
     background: #f9f9f9;
 }
 
-.chart-description {
-    margin-left: 20px;
-    max-width: 200px;
-    font-size: 14px;
+.centered-visualization {
+    display: flex;
+    justify-content: center;
+    margin: 30px 10%;
+    margin-right: 30%;
+    width: 85%;
 }
 
-.legend {
-    font-size: 12px;
-    font-family: sans-serif;
+.centered-visualization .visualization {
+    width: 90%;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    padding: 20px;
+    transition: transform 0.2s;
 }
 
+.centered-visualization .visualization:hover {
+    transform: scale(1.05);
+}
+
+/* Tooltip styles */
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 80px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+/* Pointer cursor style */
+.pointer-cursor {
+    cursor: pointer;
+}
+
+.inline-block p {
+    font-family: "Open Sans", sans-serif;
+    color: #696b6d;
+    line-height: 1.8;
+    font-size: 1.2em;
+    margin-left: 25px;
+    margin-bottom: 0px; /* Adjusted margin for better spacing */
+}
+
+.inline-block ul {
+    margin-left: 45px;
+    list-style-type: disc;
+}
 
 
