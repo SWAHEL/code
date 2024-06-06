@@ -2,6 +2,10 @@
 #home {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65)), url('../static/img/mice_640_410.jpg');
 }
+.menu #bar3 a {
+  color: rgb(242, 2, 2 );
+}
+
 .hero-title .underline{
   margin: 10px auto; 
 }
@@ -72,4 +76,23 @@ form{
   font-family: "Poppins", Sans-serif;
   font-size: 1.2em; /* Adjust the size as needed */
   display: none;
+}
+
+#classification-report {
+  display: none;
+  margin-top: 20px;
+  font-family: "Poppins", Sans-serif;
+
+}
+
+#classification-report h2 {
+  font-size: 24px;
+  color: #2c3e50;
+}
+
+#classification-report pre {
+  background-color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  overflow: auto;
 }

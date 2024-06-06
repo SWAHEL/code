@@ -5,6 +5,10 @@
 h3 {
     font-family: "Open Sans", Sans-serif;
 }
+.menu #bar2 a {
+    color: rgb(242, 2, 2 );
+  }
+  
 
 .hero-title .underline {
     margin: 10px auto;

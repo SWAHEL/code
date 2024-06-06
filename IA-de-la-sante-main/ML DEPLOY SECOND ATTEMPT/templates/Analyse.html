@@ -15,11 +15,13 @@
 <body>  
     <div id="home">
         <ul class="menu">
-          <li><h1 id="VisualizingCancer"> Visualizing Cancer   </h1>  </li> 
-          <li class="bar"><a href="../../code/index.html"><h3>Home </i></h3></a></li>
-          <li class="bar"><a href="../../code/Visualisation.html"><h3>Visualisation </h3></a></li>
-          <li class="bar"><a href="../../ML DEPLOY SECOND ATTEMPT/templates/Analyse.html"><h3>Analyse </h3></a></li>
-          <li class="bar"><a href="../../code/contact.html"><h3>Contact </h3></a></li>
+          <li><h1 id="VisualizingCancer"> Breast cancer <br> prediction  </h1>  </li> 
+          <li class="bar" id="bar1"><a href="../../code/index.html"><h3>Home </i></h3></a></li>
+          <li class="bar" id="bar2"><a href="../../code/Visualisation.html"><h3>Visualisation </h3></a></li>
+          <li class="bar" id="bar3"><a href="../../ML DEPLOY SECOND ATTEMPT/templates/Analyse.html"><h3>Analyse </h3></a></li>
+          <li class="bar" id="bar4"><a href="../../code/contact.html"><h3>Contact </h3></a></li>
+          <li class="bar" id="bar5"><a href="../../code/add_analysis.html"><h3>Add Analysis</h3></a></li>
+
         </ul>
         <div class="hero-title">
           <h1>
@@ -27,7 +29,7 @@
           </h1>
           <div class="underline"></div>
           <h3 class="under-hero-title">
-             Healthcare with Data Visualization
+            Breast Cancer Analysis
           </h3> 
         </div>
       </div>
@@ -160,6 +162,19 @@
     <div id="prediction-text"  class="prediction-text">
         {{ prediction_text }}
     </div>
+    <div id="classification-report" style="display: none;">
+      <h2>Classification Report</h2>
+      <pre id="classification-report-text" >
+precision    recall  f1-score   support
+
+0       0.96      0.97      0.96        67
+1       0.96      0.94      0.95        47
+
+accuracy                           0.96       114
+macro avg      0.96      0.95      0.95       114
+weighted avg   0.96      0.96      0.96       114
+      </pre>
+  </div>
 </body>
 <footer>
   <div class="footer-container">
